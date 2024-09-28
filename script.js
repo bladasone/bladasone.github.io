@@ -338,6 +338,65 @@ function refreshPage(e){
     }
 }
 
+function getTouchPos(e) {
+    // Получение координат касания относительно холста
+    let rect = canvas.getBoundingClientRect();
+    let touch = e.touches[0]; // Берем первое касание
+    let x = touch.clientX - rect.left;
+    let y = touch.clientY - rect.top;
+    return { x: x, y: y };
+}
+
+function touchStarted(e) {
+    // Обработка касания на экране
+    let pos = getTouchPos(e);
+    mouseX = pos.x;
+    mouseY = pos.y;
+
+    // Эмулируем левый клик
+    checkCellClicked();
+}
+
+function touchRight(e) {
+    // Обработка долгого касания как правый клик (флаг)
+    let pos = getTouchPos(e);
+    mouseX = pos.x;
+    mouseY = pos.y;
+
+    if (markersRemaining > 0) {
+        markCell();
+    }
+}
+
+function setupTouchHandlers() {
+    // Добавляем обработчики касания
+    canvas.addEventListener('touchstart', touchStarted);
+    
+    // Добавляем обработку долгого касания для установки флага
+    canvas.addEventListener('touchend', function(e) {
+        if (e.touches.length === 0 && markersRemaining > 0) {
+            touchRight(e);
+        }
+    });
+
+    // Отключаем стандартное контекстное меню для touch-событий
+    canvas.addEventListener('touchstart', function(e) {
+        e.preventDefault(); 
+    });
+}
+
+function updateCanvas() {
+    // Отслеживание событий мыши
+    window.addEventListener("mouseup", mouseClicked);
+    // Обработка события правой кнопки мыши (предотвращение контекстного меню)
+    window.addEventListener("contextmenu", (e) => {
+        e.preventDefault();  // Отключаем контекстное меню
+    });
+    
+    // Поддержка touch-событий для смартфонов
+    setupTouchHandlers();
+}
+
 // Setup the canvas when pages is loaded
 document.addEventListener('DOMContentLoaded', SetupCanvas);
 // Refesh page when hitting 'r'-key
