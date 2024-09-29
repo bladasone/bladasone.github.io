@@ -212,7 +212,6 @@ function mouseClicked(e) {
     }
 }
 
-
 function gameOver() {
     // Показать все клетки
     for (let i = 0; i < cols; i++) {
@@ -240,7 +239,6 @@ function gameOver() {
     ctx.clearRect(10, cols * cellSize + 10, rows * cellSize + 40, 100);
     ctx.font = "20px Courier New";
     ctx.fillStyle = "black";
-    ctx.fillText("Все, бабахнуло", 10, cols * cellSize + 30);
     ctx.fillText("Нажмите 'F5', чтобы начать заново!", 10, cols * cellSize + 60);
 
     // Удаляем текст о количестве оставшихся флажков и его значение
@@ -249,7 +247,6 @@ function gameOver() {
     // Сбрасываем количество оставшихся флажков
     markersRemaining = 0;
 }
-
 
 function checkCellClicked(){
     // Проверка, была ли клетка нажата
@@ -266,7 +263,6 @@ function checkCellClicked(){
                     ctx.clearRect(10, cols*cellSize+10, rows*cellSize+40, 100);
                     ctx.font = "20px Courier New";
                     ctx.fillStyle = "black";
-                    ctx.fillText("Все, бабахнуло", 10, cols*cellSize+30);
                     ctx.fillText("Нажмите 'F5', чтобы начать заново!", 10, cols*cellSize+60);
                     
                     // Удален авто-ресстарт
