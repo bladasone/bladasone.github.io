@@ -157,7 +157,7 @@ function SetupCanvas(){
     ctx.clearRect(10, 0, 200, 100);
 
     troll = new Image();
-    troll.src = "ancient.png";
+    troll.src = "bomb.png";
 
     grid = create2dArray(cols, rows);
 
