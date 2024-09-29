@@ -123,9 +123,11 @@ function create2dArray(cols, rows){
     return arr;
 }
 
-function markersRemainingUpdate(){
-    // Updating the flag-remainding-count
-    ctx.clearRect(cols*cellSize+10, 0, 50*3, 50);
+function markersRemainingUpdate() {
+    // Попробуем очистить большую область
+    ctx.clearRect(500, 0, 1000, 100); // Очистка всего экрана или игровой области
+
+    // Обновляем текст с количеством оставшихся флагов
     ctx.font = "30px Courier New";
     ctx.fillStyle = "black";
     ctx.fillText("\u{1f6a9} осталось: " + markersRemaining, 525, 50);
@@ -152,7 +154,7 @@ function SetupCanvas(){
     // Add instructions
     ctx.font = "20px Courier New";
     ctx.fillStyle = "black";
-    ctx.fillText("1) Правая кнопка мыши чтобы поставить флажок", 10, cols*cellSize+30);
+    ctx.fillText("1) Правая кнопка мыши - флажок", 10, cols*cellSize+30);
     ctx.fillText("2) 'F5' для рестарта", 10, cols*cellSize+60);
     ctx.clearRect(10, 0, 200, 100);
 
