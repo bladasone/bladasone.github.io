@@ -130,7 +130,7 @@ function markersRemainingUpdate() {
     // Обновляем текст с количеством оставшихся флагов
     ctx.font = "30px Courier New";
     ctx.fillStyle = "black";
-    ctx.fillText("\u{1f6a9} осталось: " + markersRemaining, 525, 50);
+    ctx.fillText("\u{1f6a9} осталось: " + markersRemaining, 530, 50);
 }
 
 function SetupCanvas(){
